@@ -1,10 +1,11 @@
-var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
 var cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 var usersRouter = require('./routes/users');
+var booksRouter = require('./routes/book');
+var purchaseRouter = require('./routes/purchase');
+var authorRouter = require('./routes/author');
 const connectDB = require("./config/db")
 
 var app = express();
@@ -15,7 +16,11 @@ app.use(cookieParser());
 
 connectDB();
 
-app.use('/users', usersRouter);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/book', booksRouter);
+app.use('/api/v1/purchase', purchaseRouter);
+app.use('/api/v1/author', authorRouter);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
