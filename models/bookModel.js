@@ -6,7 +6,7 @@ const bookSchema = new mongoose.Schema({
     ISBN: { type: String, required: true },
     price: { type: Number, required: true },
     publishedDate: { type: Date, required: true }
-});
+}, { timestamps: true });
 
 const Book = mongoose.model('Book', bookSchema);
 
