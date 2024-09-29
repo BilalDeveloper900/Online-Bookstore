@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', () => {
-    res.send("get purchase")
-})
+router.get('/')
+router.post('/')
 
 module.exports = router;

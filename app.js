@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 connectDB();
 
-app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/user', usersRouter);
 app.use('/api/v1/book', booksRouter);
 app.use('/api/v1/purchase', purchaseRouter);
 app.use('/api/v1/author', authorRouter);
