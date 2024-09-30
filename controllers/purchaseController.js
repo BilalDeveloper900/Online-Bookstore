@@ -1,20 +1,20 @@
 const { httpsCodes } = require("../constant/httpcode");
 const Purchase = require("../models/purchaseModel");
 const Book = require("../models/bookModel");
-const User = require("../models/userModel"); 
+const User = require("../models/userModel");
 
 exports.addNewPurchase = async (req, res) => {
     try {
-        const { bookId } = req.body;
-        const userId = req.user._id;  
+        const { book } = req.body;
+        const userId = req.user.user._id;
 
-        const book = await Book.findById(bookId);
-        if (!book) {
+        const bookData = await Book.findById(book);
+        if (!bookData) {
             return res.status(httpsCodes.NOT_FOUND).json({ message: "Book not found" });
         }
 
         const newPurchase = new Purchase({
-            book: book._id,
+            book: bookData._id,
             user: userId,
             dateOfPurchase: Date.now()
         });
